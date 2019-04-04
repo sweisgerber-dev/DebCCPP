@@ -27,4 +27,4 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
   && echo "Setting g++ 6 as default compiler" \
   && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 1
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/bin/env", "bash"]
