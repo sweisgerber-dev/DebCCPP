@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 HOSTNAME="DebCCPP"
-HOST_PATH_1="/home/weisgerber/workspace/mdc/network-simulation/MDalloC/"
+HOST_PATH_1="/PATH/TO/HOST/WORKDIR"
 DOCKER_PATH_1="/workspace"
 
 docker run -ti \
