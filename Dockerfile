@@ -21,6 +21,7 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     cmake \
     gcc \
     g++ \
+    libc-dbg \
     gosu \
     clang \
     clang-3.8 \
@@ -29,6 +30,7 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     clang-tidy \
     python-pip \
     python-virtualenv \
+    python-pyelftools \
   && apt-get autoremove --purge -y \
   && apt-get autoclean -y \
   && rm -rf /var/cache/apt/* /tmp/* \
