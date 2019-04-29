@@ -1,0 +1,32 @@
+image: docker:stable
+
+services:
+- docker:dind
+#
+# - https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+# - https://about.gitlab.com/2016/05/23/gitlab-container-registry/
+#
+
+stages:
+- build
+
+variables:
+  DOCKER_DRIVER: overlay2
+  #
+  DOCKER_REGISTRY:         projects.cispa.saarland:5005
+  DOCKER_IMAGE_NAME:       projects.cispa.saarland:5005/weisgerber/deblatex
+  CONTAINER_TEST_IMAGE:    ${DOCKER_IMAGE_NAME}:$CI_BUILD_REF_NAME
+  CONTAINER_RELEASE_IMAGE: ${DOCKER_IMAGE_NAME}:latest
+
+
+before_script:
+  - docker info
+  - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${DOCKER_REGISTRY}
+
+build:
+  stage: build
+  script:
+    - docker pull ${DOCKER_IMAGE_NAME}:latest || true
+    - docker build --cache-from ${DOCKER_IMAGE_NAME}:latest --tag ${DOCKER_IMAGE_NAME}:$CI_COMMIT_SHA --tag ${CONTAINER_RELEASE_IMAGE} .
+    - docker push ${DOCKER_IMAGE_NAME}:$CI_COMMIT_SHA
+    - docker push ${CONTAINER_RELEASE_IMAGE}
