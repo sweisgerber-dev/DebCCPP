@@ -31,6 +31,7 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     python-pip \
     python-virtualenv \
     python-pyelftools \
+    valgrind \
   && apt-get autoremove --purge -y \
   && apt-get autoclean -y \
   && rm -rf /var/cache/apt/* /tmp/* \
