@@ -23,6 +23,7 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     g++ \
     libc-dbg \
     gosu \
+    git \
     clang \
     clang-3.8 \
     clang-3.9 \
