@@ -12,22 +12,29 @@ WORKDIR /workspace
 RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
   && DEBIAN_FRONTEND=noninteractive apt-get update \
   && apt-get dist-upgrade -y \
-  `# && echo "deb http://ftp.us.debian.org/debian jessie main contrib non-free" >> /etc/apt/sources.list.d/jessie.list `\
-  `# && echo "deb http://ftp.us.debian.org/debian unstable main contrib non-free" >> /etc/apt/sources.list.d/unstable.list `\
+  && echo "deb http://ftp.us.debian.org/debian oldoldstable main contrib non-free" >> /etc/apt/sources.list.d/jessie.list \
+  && echo "deb http://ftp.us.debian.org/debian oldstable main contrib non-free" >> /etc/apt/sources.list.d/oldstable.list \
+  && echo "deb http://ftp.us.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list.d/buster-backports.list \
   && apt-get update \
   && apt-get install -y \
+    apt-utils \
+    apt-transport-https \
     bash \
     build-essential \
     cmake \
     gcc \
+    gcc-7 \
     g++ \
+    g++-7 \
     libc-dbg \
     gosu \
     git \
     clang \
-    clang-3.8 \
     clang-3.9 \
     clang-4.0 \
+    clang-6.0 \
+    clang-7 \
+    clang-8 \
     clang-tidy \
     python3 \
     python3-pip \
@@ -40,8 +47,8 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
   && apt-get autoremove --purge -y \
   && apt-get autoclean -y \
   && rm -rf /var/cache/apt/* /tmp/* \
-  && echo "Setting g++ 6 as default compiler" \
-  && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 1
+  && echo "Setting g++ 8 as default compiler" \
+  && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 1
 
 # Create a non-root user that will perform the actual build
 # RUN id ${USER} 2>/dev/null || addgroup -S latex && adduser -S latex -G latex useradd --uid ${USER_ID_DEFAULT} --create-home --shell /bin/bash ${USER}
