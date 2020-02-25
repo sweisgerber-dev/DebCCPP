@@ -30,8 +30,6 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     gosu \
     git \
     clang \
-    clang-3.9 \
-    clang-4.0 \
     clang-6.0 \
     clang-7 \
     clang-8 \
