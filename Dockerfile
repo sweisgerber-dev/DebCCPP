@@ -29,6 +29,10 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     clang-3.9 \
     clang-4.0 \
     clang-tidy \
+    python3 \
+    python3-pip \
+    python3-virtualenv \
+    python3-pyelftools \
     python-pip \
     python-virtualenv \
     python-pyelftools \

@@ -1,6 +1,6 @@
 # DebCCPP
 
-Debian Stable based image for C & C++ builds, including cmake
+Debian Stable based image for C & C++ builds, including cmake, python2 & python3
 
 ## Build
 
