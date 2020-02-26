@@ -22,6 +22,7 @@ RUN echo "*** Installing build-essential, gcc, g++, clang and cmake ***" \
     bash \
     build-essential \
     cmake \
+    ninja-build \
     gcc \
     gcc-7 \
     g++ \
